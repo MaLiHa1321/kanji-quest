@@ -1,6 +1,7 @@
 const app = {
     currentLevel: null,
     currentKanji: null,
+    kanjiHistory: [],
 
     init() {
         window.addEventListener('hashchange', () => this.handleRouting());
@@ -98,10 +99,21 @@ const app = {
                 item.innerText = char;
                 item.onclick = () => {
                     const similarK = this.findKanji(char);
-                    if (similarK) this.openModal(similarK);
+                    if (similarK) {
+                        this.kanjiHistory.push(this.currentKanji);
+                        this.openModal(similarK);
+                    }
                 };
                 similarList.appendChild(item);
             });
+        }
+
+        // Handle back button visibility
+        const backBtn = document.getElementById('modal-back');
+        if (this.kanjiHistory.length > 0) {
+            backBtn.classList.remove('hidden');
+        } else {
+            backBtn.classList.add('hidden');
         }
 
         document.getElementById('kanji-modal').classList.remove('hidden');
@@ -111,6 +123,14 @@ const app = {
     closeModal() {
         document.getElementById('kanji-modal').classList.add('hidden');
         document.body.style.overflow = 'auto';
+        this.kanjiHistory = []; // Reset history when closing
+    },
+
+    back() {
+        if (this.kanjiHistory.length > 0) {
+            const prevKanji = this.kanjiHistory.pop();
+            this.openModal(prevKanji);
+        }
     },
 
     findKanji(char) {

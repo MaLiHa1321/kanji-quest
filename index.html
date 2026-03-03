@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Quest | JLPT N5 & N4</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -50,7 +54,8 @@
         <section id="about-view" class="view hidden">
             <div class="about-content">
                 <h2>About KanjiQuest</h2>
-                <p>This static website is designed to provide a clean, focused experience for students preparing for the JLPT N5 and N4 exams.</p>
+                <p>This static website is designed to provide a clean, focused experience for students preparing for the
+                    JLPT N5 and N4 exams.</p>
                 <p>Built with Vanilla JS, HTML, and CSS variables for a premium, fast experience.</p>
             </div>
         </section>
@@ -60,6 +65,7 @@
     <div id="kanji-modal" class="modal hidden">
         <div class="modal-overlay" onclick="app.closeModal()"></div>
         <div class="modal-content">
+            <button id="modal-back" class="modal-back hidden" onclick="app.back()">← Back</button>
             <button class="modal-close" onclick="app.closeModal()">&times;</button>
             <div class="modal-grid">
                 <div class="modal-large-char" id="modal-char"></div>
@@ -85,4 +91,5 @@
     <script src="js/kanji-data.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>
